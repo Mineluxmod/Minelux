@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Minelux - لوحة الأدمن</title>
+    <link rel="stylesheet" href="style.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="minecraft-bg"></div>
+    <div class="content-wrapper">
+        <!-- Top Bar -->
+        <div class="topbar">
+            <div class="logo">
+                <span class="minecraft-icon">⚙️</span> 
+                <span class="logo-text">Minelux - الأدمن</span>
+            </div>
+            <div class="topbar-buttons">
+                <button class="btn btn-sm btn-outline" onclick="goToHome()">🏠 الرئيسية</button>
+                <button class="btn btn-sm btn-danger" onclick="logout()">🚪 تسجيل الخروج</button>
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <div class="container">
+                <div class="admin-header">
+                    <h1>لوحة تحكم الأدمن</h1>
+                    <p>إدارة المودات والمستخدمين</p>
+                </div>
+
+                <div class="admin-grid">
+                    <!-- Mods Management -->
+                    <div class="admin-section">
+                        <h2>إدارة المودات</h2>
+                        
+                        <div class="form-group">
+                            <label>اسم المود</label>
+                            <input type="text" id="modName" class="form-input" placeholder="أدخل اسم المود">
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>الإصدار</label>
+                                <input type="text" id="modVersion" class="form-input" placeholder="1.20.1">
+                            </div>
+                            <div class="form-group">
+                                <label>النوع</label>
+                                <select id="modType" class="form-select">
+                                    <option value="">اختر النوع</option>
+                                    <option value="أداء">أداء</option>
+                                    <option value="أدوات">أدوات</option>
+                                    <option value="سحر">سحر</option>
+                                    <option value="تقنية">تقنية</option>
+                                    <option value="مغامرة">مغامرة</option>
+                                    <option value="واقعية">واقعية</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label>رابط التحميل</label>
+                            <input type="url" id="modLink" class="form-input" placeholder="https://...">
+                        </div>
+
+                        <div class="form-group">
+                            <label>الوصف</label>
+                            <textarea id="modDesc" class="form-textarea" placeholder="وصف المود..." rows="3"></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label>صورة المود (اختياري)</label>
+                            <input type="url" id="modImage" class="form-input" placeholder="https://...">
+                        </div>
+
+                        <button class="btn btn-primary" onclick="addMod()">➕ إضافة المود</button>
+                    </div>
+
+                    <!-- Users Management -->
+                    <div class="admin-section">
+                        <h2>إدارة المستخدمين</h2>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>اسم المستخدم</label>
+                                <input type="text" id="userName" class="form-input" placeholder="اسم المستخدم">
+                            </div>
+                            <div class="form-group">
+                                <label>كلمة المرور</label>
+                                <input type="password" id="userPassword" class="form-input" placeholder="كلمة المرور">
+                            </div>
+                        </div>
+
+                        <button class="btn btn-primary" onclick="addUser()">➕ إضافة مستخدم</button>
+
+                        <!-- Users List -->
+                        <div class="users-list" id="usersList">
+                            <h3>المستخدمين الحاليين</h3>
+                            <div class="loading">جاري تحميل المستخدمين...</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Mods List -->
+                <div class="admin-section full-width">
+                    <h2>المودات الحالية</h2>
+                    <div class="mods-list" id="modsList">
+                        <div class="loading">جاري تحميل المودات...</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div class="toast" id="toast"></div>
+
+    <script type="module" src="utils.js"></script>
+    <script type="module" src="users.js"></script>
+    <script type="module" src="admin_logic.js"></script>
+</body>
+</html>
