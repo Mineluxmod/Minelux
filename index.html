@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Minelux - مودات ماينكرافت</title>
+    <link rel="stylesheet" href="style.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="minecraft-bg"></div>
+    <div class="content-wrapper">
+        <!-- Top Bar -->
+        <div class="topbar">
+            <div class="logo">
+                <span class="minecraft-icon">⛏️</span> 
+                <span class="logo-text">Minelux</span>
+            </div>
+            <div class="topbar-buttons">
+                <button class="btn btn-sm btn-outline" onclick="toggleSidebar()">☰ القائمة</button>
+            </div>
+        </div>
+
+        <!-- Sidebar -->
+        <div class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <span class="minecraft-icon">🧙</span>
+                <span>لوحة التحكم</span>
+                <button class="close-btn" onclick="toggleSidebar()">×</button>
+            </div>
+            
+            <div class="profile-section">
+                <img id="userAvatar" src="https://placehold.co/80x80/2c2c2c/ffffff?text=?" alt="Avatar" 
+                     class="user-avatar" onerror="this.src='https://placehold.co/80x80/2c2c2c/ffffff?text=?'"/>
+                <div id="userName" class="user-name">زائر</div>
+                <div class="user-status" id="userStatus">غير مسجل الدخول</div>
+            </div>
+
+            <div class="sidebar-buttons">
+                <button class="sidebar-btn" onclick="goToAdmin()" id="adminBtn">
+                    <span>⚙️</span> لوحة الأدمن
+                </button>
+                <button class="sidebar-btn" onclick="goToLogin()" id="loginBtn">
+                    <span>🔐</span> تسجيل الدخول
+                </button>
+                <button class="sidebar-btn btn-danger" onclick="logout()" id="logoutBtn" style="display:none">
+                    <span>🚪</span> تسجيل الخروج
+                </button>
+                <button class="sidebar-btn" onclick="changeAvatar()" id="changeAvatarBtn" style="display:none">
+                    <span>🖼️</span> تغيير الصورة
+                </button>
+            </div>
+
+            <div class="sidebar-footer">
+                <div class="token-status">
+                    <span class="status-dot"></span>
+                    <span>النظام جاهز</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <!-- Hero Section -->
+            <div class="hero-section">
+                <div class="hero-content">
+                    <h1 class="hero-title">
+                        <span class="minecraft-icon">🎮</span>
+                        Minelux
+                    </h1>
+                    <p class="hero-subtitle">منصة مودات ماينكرافت العربية</p>
+                    <div class="hero-stats">
+                        <div class="stat">
+                            <span class="stat-number" id="modsCount">0</span>
+                            <span class="stat-label">مود</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-number" id="usersCount">0</span>
+                            <span class="stat-label">مستخدم</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Filters -->
+            <div class="filters-section">
+                <div class="container">
+                    <div class="filters-grid">
+                        <div class="search-box">
+                            <span class="search-icon">🔍</span>
+                            <input type="text" id="searchInput" placeholder="ابحث عن مود..." class="search-input" />
+                        </div>
+                        
+                        <select id="versionFilter" class="filter-select">
+                            <option value="">كل الإصدارات</option>
+                            <option value="1.20.1">1.20.1</option>
+                            <option value="1.19.2">1.19.2</option>
+                            <option value="1.18.2">1.18.2</option>
+                        </select>
+                        
+                        <select id="typeFilter" class="filter-select">
+                            <option value="">كل الأنواع</option>
+                            <option value="أداء">أداء</option>
+                            <option value="أدوات">أدوات</option>
+                            <option value="سحر">سحر</option>
+                            <option value="تقنية">تقنية</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Mods Grid -->
+            <div class="container">
+                <div id="modsContainer" class="mods-container">
+                    <div class="loading-spinner" id="loadingSpinner">
+                        <div class="spinner"></div>
+                        <p>جاري تحميل المودات...</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Hidden File Input -->
+    <input type="file" id="avatarInput" accept="image/*" style="display:none" />
+
+    <!-- Toast Notification -->
+    <div class="toast" id="toast"></div>
+
+    <script type="module" src="utils.js"></script>
+    <script type="module" src="users.js"></script>
+    <script type="module" src="index_logic.js"></script>
+</body>
+                              </html>
