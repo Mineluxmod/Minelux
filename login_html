@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Minelux - تسجيل الدخول</title>
+    <link rel="stylesheet" href="style.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="minecraft-bg"></div>
+    <div class="content-wrapper">
+        <!-- Top Bar -->
+        <div class="topbar">
+            <div class="logo">
+                <span class="minecraft-icon">⛏️</span> 
+                <span class="logo-text">Minelux</span>
+            </div>
+            <div class="topbar-buttons">
+                <button class="btn btn-sm btn-outline" onclick="goToHome()">🏠 الرئيسية</button>
+            </div>
+        </div>
+
+        <!-- Login Content -->
+        <div class="auth-container">
+            <div class="auth-card">
+                <div class="auth-header">
+                    <span class="minecraft-icon">🔐</span>
+                    <h1>تسجيل الدخول</h1>
+                    <p>أدخل بياناتك للوصول إلى Minelux</p>
+                </div>
+
+                <div class="auth-tabs">
+                    <button class="tab-btn active" onclick="switchTab('login')">تسجيل الدخول</button>
+                    <button class="tab-btn" onclick="switchTab('register')">إنشاء حساب</button>
+                </div>
+
+                <!-- Login Form -->
+                <div class="tab-content active" id="loginTab">
+                    <div class="form-group">
+                        <label>اسم المستخدم</label>
+                        <input type="text" id="loginUsername" class="form-input" placeholder="أدخل اسم المستخدم">
+                    </div>
+
+                    <div class="form-group">
+                        <label>كلمة المرور</label>
+                        <input type="password" id="loginPassword" class="form-input" placeholder="أدخل كلمة المرور">
+                    </div>
+
+                    <button class="btn btn-primary btn-full" onclick="login()">🚀 تسجيل الدخول</button>
+
+                    <div class="auth-footer">
+                        <p>بيانات الاختبار:</p>
+                        <p><strong>Minelux</strong> / <strong>admin1234</strong></p>
+                    </div>
+                </div>
+
+                <!-- Register Form -->
+                <div class="tab-content" id="registerTab">
+                    <div class="form-group">
+                        <label>اسم المستخدم</label>
+                        <input type="text" id="registerUsername" class="form-input" placeholder="اختر اسم مستخدم">
+                    </div>
+
+                    <div class="form-group">
+                        <label>كلمة المرور</label>
+                        <input type="password" id="registerPassword" class="form-input" placeholder="اختر كلمة مرور قوية">
+                    </div>
+
+                    <div class="form-group">
+                        <label>تأكيد كلمة المرور</label>
+                        <input type="password" id="registerConfirm" class="form-input" placeholder="أعد إدخال كلمة المرور">
+                    </div>
+
+                    <button class="btn btn-primary btn-full" onclick="register()">🎯 إنشاء حساب</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div class="toast" id="toast"></div>
+
+    <script type="module" src="utils.js"></script>
+    <script type="module" src="users.js"></script>
+    <script type="module" src="login_logic.js"></script>
+</body>
+</html>
