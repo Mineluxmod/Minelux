@@ -317,5 +317,25 @@ window.changeAvatar = function() {
     }
 };
 
-// Initialize the app
+// أضف في نهاية الملف قبل document.addEventListener
+window.goToLogin = function() {
+    window.location.href = 'login.html';
+};
+
+window.goToAdmin = function() {
+    if (currentUser && users[currentUser]?.role === 'admin') {
+        window.location.href = 'admin.html';
+    } else {
+        toast('يجب أن تكون مديراً للوصول إلى هذه الصفحة', 'error');
+    }
+};
+
+window.changeAvatar = function() {
+    const avatarInput = document.getElementById('avatarInput');
+    if (avatarInput) {
+        avatarInput.click();
+    }
+};
+
+// تأكد من أن هذا موجود في الأسفل
 document.addEventListener('DOMContentLoaded', init);
